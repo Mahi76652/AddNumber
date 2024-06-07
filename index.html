@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Adder</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(200deg, #0fa68b 35%, #7a8ee5 75%);
+            color: #333;
+        }
+        .container {
+            margin-top: 5%;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .result-board {
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #fff;
+            background-color: #007bff;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: scale(0);
+            opacity: 0;
+        }
+        .result-board.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Add Two Numbers</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="adderForm">
+                    <div class="form-group">
+                        <label for="number1">Number 1</label>
+                        <input type="number" class="form-control" id="number1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="number2">Number 2</label>
+                        <input type="number" class="form-control" id="number2" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Add Numbers</button>
+                </form>
+                <div class="result-board mt-4" id="result">
+                    Result: <span id="resultValue"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('adderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var number1 = parseFloat(document.getElementById('number1').value);
+            var number2 = parseFloat(document.getElementById('number2').value);
+            var result = number1 + number2;
+            document.getElementById('resultValue').innerText = result;
+            var resultBoard = document.getElementById('result');
+            resultBoard.classList.add('show');
+            resultBoard.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
